@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chi-Ching (Sonia) Juan — CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #ffffff;
+    --ink: #1b1e24;
+    --muted: #5b606b;
+    --rule: #d9dce2;
+    --accent: #2d4a7a;
+    --tbd-bg: #fff1b8;
+    --tbd-ink: #5c4400;
+    --serif: 'Literata', Georgia, 'Times New Roman', serif;
+    --sans: var(--serif);
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  :root[data-theme="dark"] {
+    --paper: #15181d; --ink: #e6e8ec; --muted: #9aa1ad; --rule: #2c313a;
+    --accent: #9db8e6; --tbd-bg: #4d3f10; --tbd-ink: #ffe9a6;
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .cv { max-width: 860px; margin: 0 auto; padding: 48px 28px 64px; }
+
+  a { color: inherit; text-decoration-color: var(--rule); text-underline-offset: 3px; }
+  a:hover { text-decoration-color: var(--accent); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+
+  /* Header */
+  header { text-align: center; margin-bottom: 36px; }
+  h1 {
+    font-family: var(--serif); font-weight: 500; font-size: 34px;
+    line-height: 1.15; letter-spacing: -0.01em; color: var(--accent);
+  }
+  .affil { font-family: var(--sans); font-size: 14px; color: var(--muted); margin-top: 6px; }
+  .contact { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; margin-top: 10px; font-family: var(--sans); font-size: 13.5px; }
+
+  /* Sections: title hangs in the left column */
+  section {
+    display: grid; grid-template-columns: 150px 1fr; column-gap: 28px;
+    padding-top: 18px; margin-top: 18px; border-top: 1px solid var(--rule);
+  }
+  h2 {
+    font-family: var(--serif); font-weight: 600; font-size: 14.5px;
+    color: var(--accent); line-height: 1.4; padding-top: 3px;
+  }
+  .body > * + * { margin-top: 16px; }
+
+  .entry-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .role { font-weight: 600; }
+  .date {
+    color: var(--muted); font-size: 14px;
+    white-space: nowrap; font-variant-numeric: tabular-nums;
+  }
+  .sub { color: var(--muted); font-size: 14px; }
+  .project { font-weight: 500; margin-top: 10px; }
+  .venue { display: block; color: var(--muted); font-size: 14px; }
+  ul { margin-top: 4px; padding-left: 18px; }
+  li { margin-top: 3px; }
+  li::marker { color: var(--ink); }
+
+  .interest { max-width: 68ch; }
+
+  /* Publications */
+  .pubs-body { counter-reset: pub; }
+  .pubcat { font-weight: 500; }
+  .pubcat + ol.pubs { margin-top: 6px; }
+  ol.pubs { list-style: none; padding-left: 0; }
+  ol.pubs li { counter-increment: pub; position: relative; padding-left: 34px; margin-top: 10px; }
+  ol.pubs li:first-child { margin-top: 0; }
+  ol.pubs li::before {
+    content: "[" counter(pub) "]"; position: absolute; left: 0; top: 0;
+    font-family: var(--sans); font-size: 13px; color: var(--muted); padding-top: 2px;
+  }
+  .me { font-weight: 600; }
+  .status { color: inherit; }
+
+  /* Awards + skills */
+  .ext { width: 0.75em; height: 0.75em; margin-left: 4px; vertical-align: 0.05em; color: var(--muted); }
+  .ext-link { text-decoration: none; }
+  a:hover .ext { color: var(--accent); }
+  .award { display: grid; grid-template-columns: 1fr auto; gap: 16px; }
+  .skills { display: grid; grid-template-columns: 140px 1fr; gap: 6px 16px; }
+  .skills dt { font-weight: 600; }
+
+  .theme-toggle {
+    position: fixed; top: calc(14px + env(safe-area-inset-top, 0px)); right: 16px;
+    display: flex; align-items: center; gap: 8px;
+    font-family: var(--sans); font-size: 13px; color: var(--muted);
+    background: none; border: 0; cursor: pointer; padding: 4px;
+  }
+  .track {
+    width: 36px; height: 20px; border-radius: 999px; position: relative;
+    background: var(--rule); transition: background .2s;
+  }
+  .knob {
+    position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%;
+    background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.25); transition: transform .2s;
+  }
+  .theme-toggle[aria-checked="true"] .track { background: var(--accent); }
+  .theme-toggle[aria-checked="true"] .knob { transform: translateX(16px); background: var(--paper); }
+  .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+  @media (prefers-reduced-motion: reduce) { .track, .knob { transition: none; } }
+
+  @media (max-width: 640px) {
+    .cv { padding: 60px 18px 48px; }
+    section { grid-template-columns: 1fr; }
+    h1 { font-size: 28px; }
+    h2 { margin-bottom: 10px; }
+    .entry-head { flex-direction: column; gap: 0; }
+    .skills { grid-template-columns: 1fr; gap: 2px; }
+    .skills dd { margin-bottom: 8px; }
+  }
+
+  @page { size: letter; margin: 0.5in 0.55in; }
+  @media print {
+    :root, :root[data-theme] { --paper: #fff; --ink: #000; --muted: #444; --rule: #bbb; --accent: #2d4a7a; padding: 0; }
+    body { font-size: 9.6pt; line-height: 1.38; }
+    section { grid-template-columns: 118px 1fr; column-gap: 18px; }
+    .sub, .date, .venue, .affil { font-size: 9pt; }
+    .cv { max-width: none; padding: 0; }
+    header { margin-bottom: 14px; }
+    h1 { font-size: 22pt; }
+    section { padding-top: 8px; margin-top: 8px; break-inside: auto; }
+    .entry, .award, ol.pubs li, .pubgroup { break-inside: avoid; }
+    .body > * + * { margin-top: 9px; }
+    a { text-decoration: none; }
+    .theme-toggle { display: none; }
+  }
+</style>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" type="button" role="switch" aria-checked="false"><span>Dark mode</span><span class="track" aria-hidden="true"><span class="knob"></span></span></button>
+<main class="cv">
+
+<header>
+  <div class="inner">
+    <h1>Chi-Ching (Sonia) Juan</h1>
+    <div class="affil">Research Assistant, <a href="https://sialab.org/">Social Intelligence &amp; AI (SIA) Lab</a>, University of Toronto</div>
+    <div class="contact">
+      <a href="mailto:sonia.juan@mail.utoronto.ca">sonia.juan@mail.utoronto.ca</a>
+      <a href="https://scholar.google.com/citations?user=w8BVNicAAAAJ">Google Scholar</a>
+      <a href="https://www.linkedin.com/in/sonia-juan/">LinkedIn</a>
+      <a href="https://chichingjuan.framer.website/">Portfolio</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <h2>Research interests</h2>
+  <div class="body">
+    <p class="interest">My research examines how expectations for AI are formed and governed, along two tracks: (1) when and how much empathy AI systems should express in conversation, and (2) how generative AI policies are set by instructors and encountered by students across higher education.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Education</h2>
+  <div class="body">
+    <div class="entry">
+      <div class="entry-head">
+        <span><span class="role">Master of Information</span>, University of Toronto</span>
+        <span class="date">Sep 2024 – May 2026</span>
+      </div>
+      <div class="sub">Concentration: User Experience Design, GPA: 3.89 / 4.0</div>
+      <div class="sub">Relevant coursework: Research Methods, Introduction to Statistics for Data Science, Critical Studies of Social Media</div>
+    </div>
+    <div class="entry">
+      <div class="entry-head">
+        <span><span class="role">Bachelor of Design</span>, National Taiwan Normal University</span>
+        <span class="date">Sep 2018 – May 2022</span>
+      </div>
+      <div class="sub">Concentration: Industrial Design, GPA: 4.1 / 4.3</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Research experience</h2>
+  <div class="body">
+    <div class="entry">
+      <div class="entry-head">
+        <span><span class="role">Research Assistant</span>, <a href="https://sialab.org/">SIA Lab</a></span>
+        <span class="date">Sep 2025 – Present</span>
+      </div>
+      <div class="sub">Faculty of Information, University of Toronto, Supervisor: <a href="https://www.linkedin.com/in/taotw/">Tao Wang</a></div>
+
+      <div class="project">Empathy appropriateness in AI systems</div>
+      <ul>
+        <li>Co-developed a signal-cost framework that evaluates AI empathy appropriateness as the match between user demand and chatbot supply; presented the poster at IEEE CASCON 2025 [1].</li>
+        <li>Framed and analyzed a study of 28,239 Reddit post–reply dyads across three advice communities, identifying &ldquo;decision support under stress&rdquo; as a distinct interaction type that elicits empathy comparable to emotional disclosure while retaining high instrumentality [2].</li>
+        <li>Conducted the literature review and co-developed the framing for a theoretical framework on calibrating empathy in LLM responses, proposing a &ldquo;minimum sufficient empathy&rdquo; principle and five testable propositions [3].</li>
+      </ul>
+
+      <div class="project">Generative AI policy in higher education</div>
+      <ul>
+        <li>Study how generative AI policies vary across disciplines, instructors, and courses, and how this variation shapes students' learning experiences.</li>
+        <li>Collected, curated, and analyzed 1,836 publicly posted syllabi from ten departments across U of T's three campuses (Winter 2023–Winter 2026) [4].</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Publications</h2>
+  <div class="body pubs-body">
+    <div class="pubgroup"><div class="pubcat">Peer-reviewed Conference Proceedings</div>
+    <ol class="pubs">
+      <li>Tao Wang, <span class="me">Chi-Ching Juan</span>, and Harold Lee. 2025. <a href="https://doi.org/10.1109/CASCON66301.2025.00102">Appropriateness of Empathy in AI: A Signal-Cost Perspective</a>. <span class="venue">In Proceedings of the IEEE International Conference on Collaborative Advances in Software and Computing (CASCON 2025), Toronto, Canada, pp. 597–598. <a href="https://doi.org/10.1109/CASCON66301.2025.00102">doi:10.1109/CASCON66301.2025.00102</a></span></li>
+    </ol></div>
+    <div class="pubgroup"><div class="pubcat">Preprints</div>
+    <ol class="pubs">
+      <li>Tao Wang and <span class="me">Chi-Ching Juan</span>. 2026. <a href="https://arxiv.org/pdf/2605.29399">Expecting Empathy: How Interaction Context Shapes Norms for Empathic Response in Digital Communication</a>. <span class="venue">arXiv preprint <a href="https://arxiv.org/abs/2605.29399">arXiv:2605.29399</a>.</span></li>
+    </ol></div>
+    <div class="pubgroup"><div class="pubcat">Under Review</div>
+    <ol class="pubs">
+      <li>Tao Wang, <span class="me">Chi-Ching Juan</span>, and Irfan Mohammed. How to Determine the Appropriate Empathy Level in LLM Responses? <span class="venue">Submitted to ACM CHI Conference on Human Factors in Computing Systems (CHI 2027).</span></li>
+      <li>Tao Wang, Irfan Mohammed, and <span class="me">Chi-Ching Juan</span>. Same Semester, Different Rules: Mapping Students' Potential Exposure to Generative-AI Policy Variation. <span class="venue">Submitted to ACM CHI Conference on Human Factors in Computing Systems (CHI 2027).</span></li>
+    </ol></div>
+  </div>
+</section>
+
+<section>
+  <h2>Teaching &amp; mentoring</h2>
+  <div class="body">
+    <div class="entry">
+      <div class="entry-head">
+        <span><span class="role">Project Advisor</span>, AI Plus Summer Research and Innovation Bootcamp</span>
+        <span class="date">Jul 2026 – Sep 2026</span>
+      </div>
+      <div class="sub">Hosted by <a href="https://linkedkey.com/">LinkedKey</a>, Program Lead: <a href="https://www.linkedin.com/in/taotw/">Tao Wang</a></div>
+      <ul>
+        <li>Advised high school students on developing independent AI-related research projects, guiding them in formulating research questions, reviewing literature, and selecting appropriate methods.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Professional experience</h2>
+  <div class="body">
+    <div class="entry">
+      <div class="entry-head">
+        <span><span class="role">Product Design Co-op</span>, Design System Team, <a href="https://www.manulife.com/ca/en/personal">Manulife</a></span>
+        <span class="date">Sep 2025 – Dec 2025</span>
+      </div>
+      <div class="sub">Supervisor: <a href="https://www.linkedin.com/in/davidricardovera/">David Vera</a></div>
+      <ul>
+        <li>Conducted heuristic audits of conversational and AI-driven interfaces, focusing on feedback clarity, interaction efficiency, and error recovery.</li>
+        <li>Designed and tested conversational UI components for internal AI tools and improved component accessibility within the Canada Design System.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span><span class="role">User Experience Designer</span>, <a href="https://uxi-design.com/">UXI Design Agency</a></span>
+        <span class="date">Jul 2022 – Aug 2024</span>
+      </div>
+      <div class="sub">Supervisor: <a href="https://www.linkedin.com/in/chiun-yi-jang-1528366/">Ian Jang</a></div>
+      <ul>
+        <li>Led mixed-methods UX research for fintech and healthcare clients, combining interviews, field studies, and usability testing to inform design frameworks.</li>
+        <li>Applied participatory design methods in a three-day public exhibition and interactive web experience addressing misconceptions about social housing, engaging 1,500+ participants.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span><span class="role">UI/UX Design Co-op</span>, <a href="https://d8ai.com/">D8AI Inc.</a></span>
+        <span class="date">Jan 2021 – May 2022</span>
+      </div>
+      <div class="sub">Supervisor: <a href="https://www.design.ntnu.edu.tw/?p=12477&amp;lang=en">Manfred Wang</a></div>
+      <ul>
+        <li>Explored design approaches for AI-driven conversational interfaces, focusing on tone consistency and empathetic interaction.</li>
+        <li>Designed chatbot interaction flows and data visualization dashboards, iterating through user-centered evaluation.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Awards and honors</h2>
+  <div class="body">
+    <div class="award">
+      <div><span class="role">Winner</span>, Good Design Award, Japan Institute of Design Promotion<a class="ext-link" href="https://www.g-mark.org/gallery/companies/2597ccde-e4ac-4e88-b2c9-3b8f06f7370c" aria-label="View project"><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 2h5v5M14 2 7.5 8.5M12 9.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <span class="date">Oct 2025</span>
+    </div>
+    <div class="award">
+      <div><span class="role">Design Mark</span>, Golden Pin Design Award, Taiwan Design Research Institute<a class="ext-link" href="https://goldenpin.org.tw/goldenpin/zh-TW/winners/2579" aria-label="View project"><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 2h5v5M14 2 7.5 8.5M12 9.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <span class="date">Nov 2023</span>
+    </div>
+    <div class="award">
+      <div><span class="role">Silver Award</span>, Young Designers' Exhibition (YODEX)<a class="ext-link" href="https://www.design.ntnu.edu.tw/?p=8498" aria-label="View project"><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 2h5v5M14 2 7.5 8.5M12 9.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="sub">In partnership with the National Palace Museum and Delta Electronics</div></div>
+      <span class="date">May 2022</span>
+    </div>
+    <div class="award">
+      <div><span class="role">Silver Award</span>, Young Designers' Exhibition (YODEX)<a class="ext-link" href="https://www.design.ntnu.edu.tw/?p=8449" aria-label="View project"><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 2h5v5M14 2 7.5 8.5M12 9.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="sub">In partnership with Wison Pharmacy</div></div>
+      <span class="date">Mar 2022</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Skills</h2>
+  <div class="body">
+    <dl class="skills">
+      <dt>Research methods</dt>
+      <dd>Literature review, statistical analysis, LLM-assisted annotation, qualitative coding, semi-structured interviews, survey design, field studies, participatory design, usability testing, heuristic evaluation</dd>
+      <dt>Design</dt>
+      <dd>UI/UX design, conversational UI design, design systems, prototyping, accessibility (WCAG)</dd>
+      <dt>Programming</dt>
+      <dd>R (statistical analysis, data visualization), HTML, CSS, JavaScript</dd>
+    </dl>
+  </div>
+</section>
+
+</main>
+<script>
+  (function () {
+    var root = document.documentElement, btn = document.getElementById('themeToggle');
+    var theme = 'light';
+    try { localStorage.removeItem('cv-theme'); } catch (e) {}
+    function apply() {
+      root.setAttribute('data-theme', theme);
+      btn.setAttribute('aria-checked', theme === 'dark' ? 'true' : 'false');
+    }
+    apply();
+    btn.addEventListener('click', function () {
+      theme = theme === 'dark' ? 'light' : 'dark';
+      apply();
+    });
+  })();
+</script>
+</body>
+</html>
